@@ -1,0 +1,40 @@
+
+body {
+    background-color: #6B8E23;
+    color: #fff;
+}
+
+h2, h3 {
+    text-align: center;
+}
+
+form {
+    padding-bottom: 50px;
+}
+
+.container {
+    padding-top: 35px;
+}
+
+#buttons {
+    width: 100%
+}
+
+#add {
+    text-align: left;
+}
+
+#draw {
+    text-align: right;
+}
+
+#clearPoints {
+    text-align: center;
+}
+
+#instructions {
+    text-align: justify;
+}
+
+
+

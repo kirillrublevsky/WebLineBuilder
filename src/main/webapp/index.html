@@ -1,0 +1,59 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <title>Line Bulder</title>
+    <meta charset="utf-8">
+    <link rel="shortcut icon" type="image/png" href="resources/images/favicon.png"/>
+    <link rel="stylesheet" type="text/css" href="resources/css/vendor/bootstrap.min.css"/>
+    <link rel="stylesheet" type="text/css" href="resources/css/style.css"/>
+    <link rel="stylesheet" type="text/css" href="resources/css/bootstrap-notify.css"/>
+</head>
+<body>
+<div class="container">
+    <div class="row">
+        <div class="col-lg-9">
+            <h2>Broken line without intersections</h2>
+            <canvas id="canvas" height="540" width="840">Your browser does not support the canvas element.</canvas>
+        </div>
+        <div class="col-lg-3">
+            <h2>Add new point</h2>
+
+            <form role="form">
+                <div class="form-group">
+                    <input id="x" type="number" class="form-control" placeholder="X" maxlength="3"/>
+                </div>
+                <div class="form-group">
+                    <input id="y" type="number" class="form-control" placeholder="Y" maxlength="3"/>
+                </div>
+                <table id="buttons">
+                    <tr>
+                        <td id="add">
+                            <button type="submit" class="btn btn-info btn-lg">Add point</button>
+                        </td>
+                        <td id="draw">
+                            <button type="submit" class="btn btn-danger btn-lg">Draw line</button>
+                        </td>
+                    </tr>
+                </table>
+            </form>
+            <h3>Instructions:</h3>
+
+            <p id="instructions">You can add new point by entering X (from -400 to 400) and Y (from -250 to 250)
+                coordinates. To draw the broken line you need to push "Draw line" button. To clear all points and
+                start adding them again push "CLEAR POINTS"</p>
+
+            <div id="clearPoints">
+                <button id="clear" type="submit" class="btn btn-warning btn-lg">CLEAR POINTS</button>
+            </div>
+        </div>
+        <div class="notifications bottom-right"></div>
+    </div>
+</div>
+<script src="resources/js/vendor/jquery.min.js"></script>
+<script src="resources/js/vendor/bootstrap.min.js"></script>
+<script src="resources/js/vendor/bootstrap-notify.js"></script>
+<script src="resources/js/notifications.js"></script>
+<script src="resources/js/canvas.js"></script>
+<script src="resources/js/script.js"></script>
+</body>
+</html>
