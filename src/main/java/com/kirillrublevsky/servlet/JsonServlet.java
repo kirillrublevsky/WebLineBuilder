@@ -1,31 +1,27 @@
 package com.kirillrublevsky.servlet;
 
 import com.google.gson.Gson;
+import com.kirillrublevsky.service.JdbcService;
+import com.kirillrublevsky.service.impl.JdbcServiceImpl;
 
 import javax.servlet.ServletException;
 import javax.servlet.annotation.WebServlet;
 import javax.servlet.http.HttpServlet;
 import javax.servlet.http.HttpServletRequest;
 import javax.servlet.http.HttpServletResponse;
-import java.awt.Point;
+import java.awt.*;
 import java.io.IOException;
-import java.util.ArrayList;
-import java.util.List;
-
-import static com.kirillrublevsky.service.PointSorter.sort;
 
 @WebServlet("/JsonServlet")
 public class JsonServlet extends HttpServlet {
 
-    List<Point> points = new ArrayList<Point>();
+    private JdbcService jdbcService = new JdbcServiceImpl();
 
     @Override
     protected void doGet(HttpServletRequest request, HttpServletResponse response)
             throws ServletException, IOException {
-        if (!points.isEmpty()) {
-            points = sort(points);
-        }
-        String json = new Gson().toJson(points);
+
+        String json = new Gson().toJson(jdbcService.findAll());
         response.setContentType("application/json");
         response.getWriter().write(json);
     }
@@ -37,13 +33,13 @@ public class JsonServlet extends HttpServlet {
         Gson gson = new Gson();
         Integer x = gson.fromJson(request.getParameter("x"), Integer.class);
         Integer y = gson.fromJson(request.getParameter("y"), Integer.class);
-        points.add(new Point(x, y));
+        jdbcService.addPoint(new Point(x, y));
     }
 
     @Override
     protected void doDelete(HttpServletRequest request, HttpServletResponse response)
             throws ServletException, IOException {
 
-        points.clear();
+        jdbcService.deleteAll();
     }
 }
